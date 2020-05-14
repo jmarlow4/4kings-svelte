@@ -68,13 +68,11 @@
 
 <main>
 	<ColumnsContainer>
-		{#each [...cardsData] as [key, cards]}
+		{#each [...cardsData] as [key, cards] (key)}
 			<CardColumn {...SuitsEnum[key]}>
 			{#each cards as card}
 				<Card {...card} />
 			{/each}
-			{cards.length}
-			<Card value="{5}" suit="{'CLUBS'}" />
 		</CardColumn>
 		{/each}
 </ColumnsContainer>
