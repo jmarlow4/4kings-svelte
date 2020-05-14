@@ -1,14 +1,15 @@
 <script>
   import { SuitsEnum } from "../enums/index.js";
+  import { onMount } from 'svelte';
 
   export let suit;
   export let value;
 
 </script>
 
-<div class="card" class:is-red="{suit.isRed}">
+<div class="card" class:is-red="{SuitsEnum[suit].isRed}">
   <span class="suit">
-    ${suit.symbol}
+    {SuitsEnum[suit].symbol}
   </span>
   <span>{value}</span>
 </div>

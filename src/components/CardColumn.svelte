@@ -5,8 +5,8 @@
 
 <div class="card-column" class:is-red="{isRed}">
   <span class="suit">{symbol}</span>
+  <slot></slot>
 </div>
-<slot></slot>
 
 <style>
   .card-column {
