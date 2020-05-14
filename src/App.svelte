@@ -1,30 +1,44 @@
 <script>
-	export let name;
+	import { DeckService } from './services/index.js';
+	import { SuitsEnum, CardVals } from './enums/index.js';
+
+	import ColumnsContainer from './components/ColumnsContainer.svelte';
+	import CardColumn from './components/CardColumn.svelte';
+	import Card from './components/Card.svelte';
+
+	const cardLimit = 52;
+  const kingLimit = 4;
+  const numCardsToDraw = 2;
+	const intervalTime = 1000;
+	
+	// main();
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<ColumnsContainer>
+	<CardColumn
+		suit="{SuitsEnum.HEARTS.name}"
+		symbol="{SuitsEnum.HEARTS.symbol}"
+		isRed="{SuitsEnum.HEARTS.isRed}">
+	</CardColumn>
+	<CardColumn
+		suit="{SuitsEnum.CLUBS.name}"
+		symbol="{SuitsEnum.CLUBS.symbol}"
+		isRed="{SuitsEnum.CLUBS.isRed}">
+	</CardColumn>
+	<CardColumn
+		suit="{SuitsEnum.DIAMONDS.name}"
+		symbol="{SuitsEnum.DIAMONDS.symbol}"
+		isRed="{SuitsEnum.DIAMONDS.isRed}">
+	</CardColumn>
+	<CardColumn
+		suit="{SuitsEnum.SPADES.name}"
+		symbol="{SuitsEnum.SPADES.symbol}"
+		isRed="{SuitsEnum.SPADES.isRed}">
+	</CardColumn>
+</ColumnsContainer>
 </main>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
 </style>
