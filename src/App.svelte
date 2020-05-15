@@ -19,11 +19,7 @@
 		['DIAMONDS', [] ],
 		['SPADES', [] ]
 	])
-	const heartsCards = [];
-	const clubsCards = [];
-	const diamondsCards = [];
-	const spadesCards = [];
-	// console.log(cardsData)
+
 	deckService.getDeckId()
       .then( deckId => {
         let kingCount = 0;
@@ -52,7 +48,6 @@
 								const arrayCopy = cardsData.get(card.suit);
 								arrayCopy.splice(insertAt, 0, {suit: card.suit, value: card.value})
 								cardsData.set(card.suit, arrayCopy)
-								console.log(cardsData.get(card.suit))
 
                 cardCount++;
                 if (card.value === 'KING') {
@@ -60,7 +55,8 @@
                 }
               })
             })
-          }
+					}
+					cardsData = cardsData
         }, intervalTime)
       })
 	
@@ -68,9 +64,9 @@
 
 <main>
 	<ColumnsContainer>
-		{#each [...cardsData] as [key, cards] (key)}
+		{#each [...cardsData] as [key, cards]}
 			<CardColumn {...SuitsEnum[key]}>
-			{#each cards as card}
+			{#each cards as card }
 				<Card {...card} />
 			{/each}
 		</CardColumn>
