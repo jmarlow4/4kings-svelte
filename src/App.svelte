@@ -1,4 +1,6 @@
 <script>
+	import { slide } from 'svelte/transition';
+
 	import { DeckService } from './services/index.js';
 	import { SuitsEnum, CardVals } from './enums/index.js';
 
@@ -67,7 +69,9 @@
 		{#each [...cardsData] as [key, cards]}
 			<CardColumn {...SuitsEnum[key]}>
 			{#each cards as card }
-				<Card {...card} />
+				<div transition:slide>
+					<Card {...card} />
+				</div>
 			{/each}
 		</CardColumn>
 		{/each}
