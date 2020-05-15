@@ -22,8 +22,10 @@
 		['SPADES', [] ]
 	])
 
-	deckService.getDeckId()
-      .then( deckId => {
+	deckService.drawDeck()
+      .then( drawDeckResponse => {
+				const deckId = drawDeckResponse.deck_id;
+
         let kingCount = 0;
 				let cardCount = 0;
 				
@@ -32,10 +34,11 @@
           // Close it up once "win" condition is achieved
           if (cardCount >= cardLimit || kingCount >= kingLimit) {
             clearInterval(loopInterval);
-            // alert('Finished!');
+            alert('Finished!');
           } else {
             deckService.drawCards(deckId, numCardsToDraw)
-            .then( (cards) => {
+            .then( drawCardsResponse => {
+							const cards = drawCardsResponse.cards
               cards.map( card => {
 
 								// retrieve card value to test against
@@ -77,7 +80,3 @@
 		{/each}
 </ColumnsContainer>
 </main>
-
-<style>
-
-</style>
